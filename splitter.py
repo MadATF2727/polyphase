@@ -15,10 +15,10 @@ def fillSigArray(sig,M):
      sig (signal to split)
      outputs: list of lists where each member is one of M sub-signals'''
     # get the length of the sub-signal
-    subLen = int(math.ceil(len(sig)/M))+1
+    subLen = int(math.ceil(len(sig)/M))
     # if necessary, zero pad
     if len(sig) % M != 0:
-        toAppend = int((len(sig) % M) +1)
+        toAppend = M - int(len(sig) % M)
         for i in range(toAppend):
             sig.append(complex(0,0))
     # make an empty list of lists for split signal
@@ -33,7 +33,7 @@ def fillSigArray(sig,M):
     return sigArray
 
 if __name__ == "__main__":
-    testSig = range(27)
+    testSig = [1]*27
     arr = fillSigArray(testSig, 5)
     print('FOOBARBATBAZ')
 
